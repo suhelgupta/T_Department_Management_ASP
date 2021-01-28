@@ -21,15 +21,15 @@
     <header>
         <div id="Heading" class="container-fluid">
             <div id="logo" class="container center">
-                <img src="Images/logo.png" class="img-fluid" alt="...">
+                <img src="Images/logo.png" class="img-fluid" alt="..." />
             </div>
             <%--<div id="name" class="container">
                 <%--<h1>Elphinstone College</h1</div>--%>
         </div>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
             <div class="container-fluid">
                 <%--<a class="navbar-brand" href="#">Elphi</a>--%>
-                <img class="img-fluid mx-5" src="/Images/logo1.png" height="50" width="50" />
+                <img class="img-fluid mx-3" src="/Images/logo1.png" height="50" width="50" />
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -39,18 +39,61 @@
                             <a class="nav-link active" aria-current="page" href="#">Home</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"> About us
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown"> 
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                <li><a class="dropdown-item" href="#">About IT Department</a></li>
+                                <li><a class="dropdown-item" href="#">History</a></li>
+                                <li><a class="dropdown-item" href="#">Vision,misson & Goals</a></li>
                             </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Admissions
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown"> 
+                                <li><a class="dropdown-item" href="#">Admission Form</a></li>
+                                <li><a class="dropdown-item" href="#">Fees Structure</a></li>
+                                <li><a class="dropdown-item" href="#">Reservation of Seats</a></li>
+                                <li><a class="dropdown-item" href="#">Rules</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="#">Activities</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="#">Facilities</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="#">Photos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="#">Faculty</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="#">NAAC</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="#">Library</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Examination
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown"> 
+                                <li><a class="dropdown-item" href="#">Syllabus</a></li>
+                                <li><a class="dropdown-item" href="#">Sample Question Papers</a></li>
+                                <li><a class="dropdown-item" href="#">Main Exam</a></li>
+                                <li><a class="dropdown-item" href="#">Result</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="#">Contact Us</a>     
                         </li>
                     </ul>
                     <form class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                        <button class="btn btn-outline-success" type="submit">Search</button>
+                        
+                        <button class="btn btn-success mx-2" type="submit">Login</button>
+                        <button class="btn btn-success mx-2" type="submit">Register</button>
+
                     </form>
                 </div>
             </div>
@@ -64,7 +107,7 @@
     </section>
 
 
-    <footer>
+    <footer class="fixed-bottom">
         <div class="center">
            Copyright &copy; All rights reserved!
         </div>
