@@ -20,9 +20,16 @@
             display: inline-block;
             box-sizing: border-box;
         }
+        .inputtpes{
+             width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            box-sizing: border-box;
+        }
 
         /* Set a style for all buttons */
-        button {
+        .button12 {
             background-color: #4CAF50;
             color: white;
             padding: 14px 20px;
@@ -32,10 +39,10 @@
             width: 100%;
         }
 
-            /* Add a hover effect for buttons */
-            button:hover {
-                opacity: 0.8;
-            }
+        /* Add a hover effect for buttons */
+        .button12:hover {
+            opacity: 0.8;
+        }
 
         /* Extra style for the cancel button (red) */
         .cancelbtn {
@@ -87,69 +94,7 @@
             }
         }
 
-        /*######################## checkbox####################*/
-        .container2 {
-            display: inline-block;
-            position: relative;
-            padding-left: 35px;
-            margin: 12px;
-            cursor: pointer;
-            font-size: 22px;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
-
-            /* Hide the browser's default radio button */
-            .container2 input {
-                position: absolute;
-                opacity: 0;
-                cursor: pointer;
-            }
-
-        /* Create a custom radio button */
-        .checkmark {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 25px;
-            width: 25px;
-            background-color: #eee;
-            border-radius: 50%;
-        }
-
-        /* On mouse-over, add a grey background color */
-        .container2:hover input ~ .checkmark {
-            background-color: #ccc;
-        }
-
-        /* When the radio button is checked, add a blue background */
-        .container2 input:checked ~ .checkmark {
-            background-color: #2196F3;
-        }
-
-        /* Create the indicator (the dot/circle - hidden when not checked) */
-        .checkmark:after {
-            content: "";
-            position: absolute;
-            display: none;
-        }
-
-        /* Show the indicator (dot/circle) when checked */
-        .container2 input:checked ~ .checkmark:after {
-            display: block;
-        }
-
-        /* Style the indicator (dot/circle) */
-        .container2 .checkmark:after {
-            top: 9px;
-            left: 9px;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: white;
-        }
+        
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
@@ -160,32 +105,36 @@
             </div>
 
             <div class="container1">
-                <label for="fname"><b>First Name</b></label>
-                <input type="text" placeholder="Enter First Name" name="fname"  required="required" />
+                <label for="fname"><b>Email</b></label>
+                <asp:TextBox ID="TextBox1" CssClass="inputtpes" runat="server"></asp:TextBox>
 
-                <label for="lname"><b>Last Name</b></label>
-                <input type="text" placeholder="Enter Last Name" name="lname" required="required"  />
+                <label for="lname"><b>Passwprd</b></label>
+                <asp:TextBox ID="TextBox2" CssClass="inputtpes" runat="server" TextMode="Password"></asp:TextBox> <br /><br />
 
-                
-                <label class="container2">Out Sider
-                     <input type="radio" checked="checked" name="radio" />
-                    <span class="checkmark"></span>
-                </label>
-                <label class="container2">InHouse
-                    <input type="radio" name="radio" />
-                    <span class="checkmark"></span >
-                </label>
-                <label class="container2">Staf
-                    <input type="radio" name="radio" />
-                    <span class="checkmark"></span>
-                </label>
-                <button type="submit">Login</button>
+                <asp:Button ID="Button1" CssClass="btn btn-outline-success mx-1" runat="server" Text="Out Sider" OnClick="Button1_Click" />
+
+                <asp:Button ID="Button2" CssClass="btn btn-outline-success mx-1" runat="server" Text="Inhouse" OnClick="Button2_Click" />
+
+                <asp:Button ID="Button3" CssClass="btn btn-outline-success mx-1" runat="server" Text="teachers" OnClick="Button3_Click" />
+
+                <asp:Button ID="Button4" CssClass="btn btn-outline-success mx-1" runat="server" Text="librarian" OnClick="Button4_Click" />
+
+                <asp:Button ID="Button5" CssClass="btn btn-outline-success mx-1" runat="server" Text="hod" OnClick="Button5_Click" />
+
+                <br /><br />
+                    <div style="display:none;" id="unique" runat="server">
+                        <label for="fname"><b>First Name</b></label>
+                        <asp:TextBox ID="TextBox3" CssClass="inputtpes" runat="server"></asp:TextBox>
+                        <br /><br />
+                    </div>
+
+                <asp:Button ID="Button6" CssClass="button12" runat="server" Text="Button" OnClick="Button6_Click" />
                 <label>
                     <input type="checkbox" checked="checked" name="remember" />
                     Remember me
                 </label>
 
-            </div
+            </div>
         </form>
     </div>
 

@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="outsider.master.cs" Inherits="outsider_outsider" %>
 
 <!DOCTYPE html>
 
@@ -24,7 +24,7 @@
     <header>
         <div id="Heading" class="container-fluid">
             <div id="logo" class="container center">
-                <img src="Images/logo.png" class="img-fluid" alt="..." />
+                <img src="/../Images/logo.png" class="img-fluid" alt="..." />
             </div>
             <%--<div id="name" class="container">
                 <%--<h1>Elphinstone College</h1</div>--%>

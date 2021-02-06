@@ -25,6 +25,13 @@
             text-align: center;
         }
 
+        .campus{
+            border: 2px solid black;
+            padding: 9px;
+            margin-top: 30px;
+        }
+
+
         @media (min-width: 768px) {
             .bd-placeholder-img-lg {
                 font-size: 3.5rem;
@@ -151,7 +158,7 @@
                 <!-- /.col-lg-4 -->
 
                 <br />
-                <div class="col-lg-1"></div>
+                <div class="col-lg-2"></div>
 
 
                 <div class="col-lg-4">
@@ -165,7 +172,7 @@
                 <!-- /.col-lg-4 -->
 
 
-                <div class="col-lg-1"></div>
+                <%--<div class="col-lg-1"></div>--%>
 
 
                 <div class="col-lg-4">
@@ -178,14 +185,31 @@
                 </div>
                 <!-- /.col-lg-4 -->
 
-                <div class="col-lg-1"></div>
+                <div class="col-lg-2"></div>
             </div>
             <!-- /.row -->
         </div>
     </div>
+
+    <hr />
+
+    <div class="container" id="AboutUs">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <h1 class="hheading">About US</h1>
+                <p class=" text-wrap">College runs an unaided course in B.Sc. Information technology course to provide a competitive edge to the young and aspiring graduates. This course covers subjects as diverse as programming, algorithms, mathematics, digital electronics, microprocessors, management practices, Web designing, etc. The total number of seats is 60 for each year.</p>
+                <br />
+                <button class="btn btn-dark d-block m-auto">View More</button>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+
     <hr />
 
     <div class="container" id="Photos">
+        <h1 class="hheading ">Photos</h1>
         <%-- teachers photos and personal details with experience --%>
         <div class="container marketing">
             <div class="row">
@@ -199,16 +223,6 @@
                       </div>
                     </div>
                 </div>
-                <div class="col-lg-3 my-2">
-                    <div class="card" style="width: 18rem;">
-                      <img src="Images/Facebook.jpg" class="card-img-top" alt="..." />
-                      <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                      </div>
-                    </div>
-                </div>
                 <div class="col-lg-3">
                     <div class="card" style="width: 18rem;">
                       <img src="Images/Facebook.jpg" class="card-img-top" alt="..." />
@@ -239,52 +253,40 @@
                       </div>
                     </div>
                 </div>
-                <div class="col-lg-3">
-                    <div class="card" style="width: 18rem;">
-                      <img src="Images/Facebook.jpg" class="card-img-top" alt="..." />
-                      <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                      </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="card" style="width: 18rem;">
-                      <img src="Images/Facebook.jpg" class="card-img-top" alt="..." />
-                      <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                      </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="card" style="width: 18rem;">
-                      <img src="Images/Facebook.jpg" class="card-img-top" alt="..." />
-                      <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                      </div>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </div>
 
     <hr />
 
-    <div class="container" id="AboutUs">
-        
-    </div>
+    
     
     <div class="container" id="ContactUS">
-
+        <h1 class="hheading">Contact Us</h1>
         <div class="row">
-            <div class="col-md-6"></div>
+            <div class="col-md-6">
+                <div class="container" id="ContactUs">
+                    <h1>Campus</h1>
+                    <div class="campus">
+                        <div class="row">
+                            <div class="col-md-1"><p class="fs-3"><i class="fas fa-map-marker-alt"></i></p></div>
+                            <div class="col-md-9">
+                                <p class="fs-5"> 156, Mahatma Gandhi Road, Mantralaya, Fort, Mumbai, Maharashtra 400023</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="campus">
+                        <p class="fs-3">&nbsp;<i class="fas fa-phone-alt"></i> &nbsp;+91 7977737042</p>
+                         
+                    </div>
+                    
+                </div>
+            </div>
             <div class="container col-md-6" id="Contact">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3774.096071659667!2d72.82886001531188!3d18.927141261552162!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7ce1e3a9a13c5%3A0xa5a1ee827799317d!2sElphinstone%20College!5e0!3m2!1sen!2sin!4v1611800887339!5m2!1sen!2sin" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                <div class="embed-responsive embed-responsive-2by2">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3774.096071659667!2d72.82886001531188!3d18.927141261552162!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7ce1e3a9a13c5%3A0xa5a1ee827799317d!2sElphinstone%20College!5e0!3m2!1sen!2sin!4v1611800887339!5m2!1sen!2sin"  class="embed-responsive-item" width="600" height="450" frameborder="0" style="border:2px solid black;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                </div>
             </div>
         </div>
     </div>
