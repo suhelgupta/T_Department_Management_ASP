@@ -7,7 +7,7 @@
             display: inline-block;
         }
 
-        .background{
+        .background {
             background-color: Gray;
         }
 
@@ -22,8 +22,14 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-     <form id="form1" runat="server">
-        <div class="container background">
+    <form id="form1" runat="server">
+
+        <div class="alert alert-dismissible fade " id="successAlert" runat="server" role="alert">
+            <strong id="strong1" runat="server">Success!</strong> <span id="message" runat="server"></span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+        <div class="container background p-5">
             <div class="row">
                 <h3>INFORMATION TECHNOLOGY ADMISSION FORM</h3>
                 <div class="col-md-6">
@@ -38,14 +44,14 @@
                 </div>
 
                 <div class="col-md-6">
-                   <h4>Year of Admission</h4>
+                    <h4>Year of Admission</h4>
                     <input type="radio" class="form-check-input" runat="server" name="q1" id="Radio1" required="required" />
                     <label class="form-check-label" for="option1">FY.BSC.IT</label>
                     <br />
-                     <input type="radio" class="form-check-input" runat="server" name="q1" id="Radio2" />
-                     <label class="form-check-label" for="option2">SY.BSC.IT</label>
+                    <input type="radio" class="form-check-input" runat="server" name="q1" id="Radio2" />
+                    <label class="form-check-label" for="option2">SY.BSC.IT</label>
                     <br />
-                     <input type="radio" class="form-check-input" runat="server" name="q1" id="Radio3"  />
+                    <input type="radio" class="form-check-input" runat="server" name="q1" id="Radio3" />
                     <label class="form-check-label" for="option3">TY.BSC.IT</label>
                 </div>
                 <div class="col-md-6">
@@ -55,14 +61,14 @@
                     <br />
                     <input type="radio" class="form-check-input" runat="server" name="q" id="Radio5" />
                     <label class="form-check-label" for="option2">Female</label>
-                    <br />       
+                    <br />
                     <input type="radio" class="form-check-input" runat="server" name="q" id="Radio6" />
                     <label class="form-check-label" for="option3">Other</label>
                 </div>
 
                 <div class="col-md-6">
                     <label for="email">Email ID</label>
-                    <input type="email" class="form-control" runat="server" placeholder="Email ID" id="email" />
+                    <input type="email" class="form-control" runat="server" placeholder="Email ID" id="emailid" />
                 </div>
                 <div class="col-md-6">
                     <label for="contactno">Contact No</label>
@@ -185,12 +191,12 @@
                     <%--<input type="file" class="form-control" runat="server" id="" aria-label="file example" />--%><br />
                 </div>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                    <asp:Button ID="Button1" CssClass="btn btn-primary" runat="server" Text="Button" OnClick="Button1_Click" />
-                    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+                    <asp:Button ID="Button1" CssClass="btn btn-primary" runat="server" Text="Button" OnClick="Button1_Click" /><br /><br />
                 </div>
+                    <asp:TextBox ID="TextBox2" TextMode="MultiLine" runat="server"></asp:TextBox>
             </div>
+        </div>
     </form>
-    </div>
     <br />
     <br />
     <br />

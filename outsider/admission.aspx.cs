@@ -4,16 +4,29 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data.SqlClient;
+
 
 public partial class outsider_admission : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        
+        if (!IsPostBack)
+        {
+            if(Session["login"] == null)
+            {
+                Response.Redirect("../Login.aspx");
+                Response.Redirect("http://www.google.com");
+            }
+            
+        }
     }
 
     protected void Button1_Click(object sender, EventArgs e)
     {
+        bool success = true;
+
         // taking datas
         string fname = TextBox1.Text;
         string lnames = lname.Value;
@@ -26,7 +39,7 @@ public partial class outsider_admission : System.Web.UI.Page
         if (Radio5.Checked) { gender = "female"; }
         if (Radio6.Checked) { gender = "other"; }
 
-        string emails = email.Value;
+        string emails = emailid.Value;
         string stphones = stphone.Value;
         string addresses = address.Value;
         string citys = city.Value;
@@ -44,29 +57,78 @@ public partial class outsider_admission : System.Web.UI.Page
         string gdphones = gno.Value;
         string schoolnames = schoolname.Value;
         string scmarks = marks.Value;
+        string filename10 = "not uploaded";
 
         //file uploading
         if (FileUpload1.HasFile)
         {
             string fileExt = System.IO.Path.GetExtension(FileUpload1.FileName);
             FileUpload1.PostedFile.SaveAs(Server.MapPath("~/Images/data/") + stphones + "_10th" + fileExt);
-            string filename = stphones + "_10th" + fileExt;
+            filename10 = stphones + "_10th" + fileExt;
         }
 
         string clgnames = clgname.Value;
         string clmarks = mark.Value;
-
+        string filename12 = "Not uploaded";
         if (FileUpload2.HasFile)
         {
             string fileExt = System.IO.Path.GetExtension(FileUpload2.FileName);
             FileUpload2.PostedFile.SaveAs(Server.MapPath("~/Images/data/") + stphones + "_12th" + fileExt);
-            string filename = stphones + "_12th" + fileExt;
+            filename12 = stphones + "_12th" + fileExt;
+        }
+
+        //Label1.Text = "" + fname + lnames + yoa + gender + state;
+
+        // connction String
+        string cs = System.Configuration.ConfigurationManager.ConnectionStrings["myconn"].ConnectionString;
+        try
+        {
+            // connection 1
+            SqlConnection con = new SqlConnection(cs);
+            con.Open();
+
+            //command
+            string addcmd = "";
+            addcmd = "INSERT INTO addmision (fname,lname,yoa,gender,email,phone,address,city,state,zipcode,fathername,fatherocp,mothername,motherocp,gaurdianname,gaurdianocp,anualincome,dob,parntcontact,gaurdiancontact,school10th,mark10th,uploadname10,college12th,mark12th,uploadname12) VALUES(" +
+                "'" + fname + "','" + lnames + "','" + yoa + "','" + gender + "','" + emails + "','" + stphones + "','" 
+                + addresses + "','" + citys + "','" + state  + "','" + zipcodes + "','" + fathernames + "','" + fatheroccs + "','" 
+                + mothernames + "','" + motheroccs + "','" + gaurnames + "','" + gauroccs + "','" + annualincomes + "','" + dobs 
+                + "','" + ptphones + "','" + gdphones + "','" + schoolnames + "','" + scmarks + "','" + filename10 + "','"
+                + clgnames + "','" + clmarks + "','" + filename12 + "')" ;
+            TextBox2.Text = addcmd;
+            SqlCommand cmd = new SqlCommand(addcmd, con);
+            cmd.ExecuteNonQuery();
+            //Label1.Text = addcmd;
+
+            con.Close();
+
+            message.InnerText = "Form Sucessfully Submitted";
+        }
+        catch(Exception f)
+        {
+            message.InnerText = "Unable to Subbmit the form " + f;
+            success = false;
+
         }
 
 
+        // removing a class
+        successAlert.Attributes.Add("class", String.Join(" ", successAlert.Attributes["class"].Split(' ').Except(new string[] { "alert-danger" }).ToArray()));
+        successAlert.Attributes.Add("class", String.Join(" ", successAlert.Attributes["class"].Split(' ').Except(new string[] { "alert-success" }).ToArray()));
 
-        Label1.Text = "" + fname + lnames + yoa + gender + state;
 
+        if (success)
+        {
 
+            successAlert.Attributes.Add("class", String.Join(" ", successAlert.Attributes["class"].Split(' ').Except(new string[] { "alert-success", }).Concat(new string[] { "alert-success" }).ToArray()));
+            successAlert.Attributes.Add("class", String.Join(" ", successAlert.Attributes["class"].Split(' ').Except(new string[] { "show", }).Concat(new string[] { "show" }).ToArray()));
+            strong1.InnerText = "Success!";
+        }
+        else
+        {
+            successAlert.Attributes.Add("class", String.Join(" ", successAlert.Attributes["class"].Split(' ').Except(new string[] { "alert-danger", }).Concat(new string[] { "alert-danger" }).ToArray()));
+            successAlert.Attributes.Add("class", String.Join(" ", successAlert.Attributes["class"].Split(' ').Except(new string[] { "show" }).Concat(new string[] { "show" }).ToArray()));
+            strong1.InnerText = "Error!";
+        }
     }
 }

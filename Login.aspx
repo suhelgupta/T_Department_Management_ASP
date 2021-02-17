@@ -109,18 +109,17 @@
                 <asp:TextBox ID="TextBox1" CssClass="inputtpes" runat="server"></asp:TextBox>
 
                 <label for="lname"><b>Passwprd</b></label>
-                <asp:TextBox ID="TextBox2" CssClass="inputtpes" runat="server" TextMode="Password"></asp:TextBox> <br /><br />
+                <asp:TextBox ID="TextBox2" CssClass="inputtpes" runat="server" TextMode="Password"></asp:TextBox> 
 
-                <asp:Button ID="Button1" CssClass="btn btn-outline-success mx-1" runat="server" Text="Out Sider" OnClick="Button1_Click" />
+                <label for="postss" class="form-label fw-bold">Select post</label>
+                <select id="postss" runat="server" class="form-select" placeholder="Choose">
+                <option selected="selected" value="1">Outsider</option>
+                <option value="2">Insider</option>
+                <option value="3">librearian</option>
+                <option value="4">hod</option>
+                <option value="5">teachers</option>
 
-                <asp:Button ID="Button2" CssClass="btn btn-outline-success mx-1" runat="server" Text="Inhouse" OnClick="Button2_Click" />
-
-                <asp:Button ID="Button3" CssClass="btn btn-outline-success mx-1" runat="server" Text="teachers" OnClick="Button3_Click" />
-
-                <asp:Button ID="Button4" CssClass="btn btn-outline-success mx-1" runat="server" Text="librarian" OnClick="Button4_Click" />
-
-                <asp:Button ID="Button5" CssClass="btn btn-outline-success mx-1" runat="server" Text="hod" OnClick="Button5_Click" />
-
+                </select>
                 <br /><br />
                     <div style="display:none;" id="unique" runat="server">
                         <label for="fname"><b>First Name</b></label>
@@ -129,10 +128,8 @@
                     </div>
 
                 <asp:Button ID="Button6" CssClass="button12" runat="server" Text="Button" OnClick="Button6_Click" />
-                <label>
-                    <input type="checkbox" checked="checked" name="remember" />
-                    Remember me
-                </label>
+                <br />
+                <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
 
             </div>
         </form>

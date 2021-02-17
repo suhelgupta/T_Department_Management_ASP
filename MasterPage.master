@@ -1,5 +1,4 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
-
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -8,6 +7,9 @@
     <link rel="stylesheet" href="/css/all.css" />
     <link rel="stylesheet" href="/css/Style.css" />
     <style>
+        html {
+             scroll-behavior: smooth;
+        }
         #Heading {
             display: flex;
             justify-content: center;
@@ -39,7 +41,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            <a class="nav-link active" aria-current="page" href="Home.aspx">Home</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"> About us
@@ -54,7 +56,7 @@
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Admissions
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown"> 
-                                <li><a class="dropdown-item" href="#">Admission Form</a></li>
+                                <li><a class="dropdown-item" href="/outsider/admission.aspx">Admission Form</a></li>
                                 <li><a class="dropdown-item" href="#">Fees Structure</a></li>
                                 <li><a class="dropdown-item" href="#">Reservation of Seats</a></li>
                                 <li><a class="dropdown-item" href="#">Rules</a></li>
@@ -67,10 +69,10 @@
                             <a class="nav-link" aria-current="page" href="#">Facilities</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="#">Photos</a>
+                            <a class="nav-link" aria-current="page" href="Home.aspx#Photos">Photos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="#">Faculty</a>
+                            <a class="nav-link" aria-current="page" href="Home.aspx#OurFalcuty">Faculty</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="#">NAAC</a>
@@ -89,14 +91,23 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="#">Contact Us</a>     
+                            <a class="nav-link" aria-current="page" href="Home.aspx#ContactUS">Contact Us</a>     
                         </li>
                     </ul>
                     <form class="d-flex">
+                        <div id="withoutlogin" runat ="server">
+                            <button class="btn btn-outline-success mx-2" onclick="location.href='Login.aspx'" type="button">Login</button>
+                            <button class="btn btn-outline-success mx-2" onclick="location.href='Registration.aspx'" type="button">Register</button>
+                        </div>
+                        <div id="withlogin" runat ="server">
+                            <a href="#" style="text-decoration:none;"><i class="fa fa-user" style="color:white;" aria-hidden="true"></i>&nbsp;
+                            <p style="color:white;" class=" d-inline-block" id="usename" runat="server">Hello </p></a>&nbsp;&nbsp;
+                            <button class="btn btn-outline-primary mx-2" onclick="location.href='logout.aspx'" type="button">Logout</button>
+                            
+                            <%--<asp:Button ID="logout" runat="server" Text="logout" OnClick="logout_Click" />--%>
+                            <%--<button class="btn btn-success mx-2" onclick="location.href='Registration.aspx'" type="button">Register</button>--%>
+                        </div>
                         
-                        <button class="btn btn-success mx-2" type="submit">Login</button>
-                        <button class="btn btn-success mx-2" type="submit">Register</button>
-
                     </form>
                 </div>
             </div>
@@ -108,7 +119,6 @@
     <section>
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
     </section>
-
 
     <footer class="fixed-bottom">
         <div class="center">

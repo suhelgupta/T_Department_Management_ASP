@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Home.aspx.cs" Inherits="Home" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+<% //if (Session == null) { } %>
     <title>Home</title>
     <link href="https://getbootstrap.com/docs/5.0/examples/carousel/carousel.css" rel="stylesheet">
     <style>
@@ -25,7 +26,7 @@
             text-align: center;
         }
 
-        .campus{
+        .campus{ 
             border: 2px solid black;
             padding: 9px;
             margin-top: 30px;
