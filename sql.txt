@@ -1,4 +1,4 @@
-Lib
+add
 
 CREATE TABLE [dbo].[addmision] (
     [Id]              INT           IDENTITY (1, 1) NOT NULL,
@@ -63,6 +63,20 @@ CREATE TABLE [dbo].[staf] (
     PRIMARY KEY CLUSTERED ([Id] ASC)
 );
 
+
+
+library
+
+CREATE TABLE [dbo].[libaddbook] (
+    [Id]              INT           IDENTITY (1, 1) NOT NULL,
+    [bookname]        VARCHAR (50)  NULL,
+    [Authorname]      VARCHAR (50)  NULL,
+    [publicationname] VARCHAR (MAX) NULL,
+    [bookcode]        VARCHAR (50)  NULL,
+    [totalquantity]   INT           NULL,
+    [avquantity]      INT           NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
 
 
 
