@@ -79,7 +79,6 @@ public partial class Registration : System.Web.UI.Page
             }
             else
             {
-
                 try
                 {
                     // Making Connection to database

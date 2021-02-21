@@ -2,7 +2,7 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+    <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <link rel="stylesheet" href="/css/boot/bootstrap.min.css" />
     <link rel="stylesheet" href="/css/all.css" />
@@ -92,7 +92,7 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="Home.aspx#ContactUS">Contact Us</a>     
+                            <a class="nav-link" aria-current="page" href="/../Home.aspx#ContactUS">Contact Us</a>     
                         </li>
                     </ul>
                     <form class="d-flex">

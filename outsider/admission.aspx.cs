@@ -14,10 +14,40 @@ public partial class outsider_admission : System.Web.UI.Page
         
         if (!IsPostBack)
         {
-            if(Session["login"] == null)
+            if(Session["login"] != null && Session["post"] != null)
+            {
+                if (Session["login"].ToString() == "true" && Session["post"].ToString() == "out")
+                {
+                    // connction String
+                    string cs = System.Configuration.ConfigurationManager.ConnectionStrings["myconn"].ConnectionString;
+
+                    try
+                    {
+
+                        SqlConnection con = new SqlConnection(cs);
+                        con.Open();
+                        SqlCommand myCommand = con.CreateCommand();
+                        myCommand.CommandText = ("SELECT  fname, lname,email, phone from Register WHERE email='" + Session["email"].ToString() + "'"); // Where Login is your table . UserName and Password Columns
+                        SqlDataReader myReader = myCommand.ExecuteReader();
+                        TextBox1.Text = myReader["fname"].ToString();
+                        lname.Value = myReader["lanme"].ToString();
+                        emailid.Value = myReader["email"].ToString();
+                        stphone.Value = myReader["phone"].ToString();
+
+                    }
+                    catch
+                    {
+
+                    }
+                }
+                else
+                {
+                    Response.Redirect("../Login.aspx");
+                }
+            }
+            else
             {
                 Response.Redirect("../Login.aspx");
-                Response.Redirect("http://www.google.com");
             }
             
         }

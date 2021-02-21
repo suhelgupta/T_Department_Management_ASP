@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="insider.master.cs" Inherits="Insider_insider" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Library.master.cs" Inherits="Library_Library" %>
 
 <!DOCTYPE html>
 
@@ -11,7 +11,10 @@
         html {
             scroll-behavior: smooth;
         }
-
+        body {
+            font-family: "Lato", sans-serif;
+            background: url("/Images/libimg.jpg") center center/cover;
+        }
         #Heading {
             display: flex;
             justify-content: center;

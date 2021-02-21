@@ -44,8 +44,8 @@ public partial class Login : System.Web.UI.Page
         else if (posts == "5") { tablename = "Register"; redrict = "Home.aspx"; post = "tec"; }
         else { ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('please select the post')", true); }
 
-            // connction String
-            string cs = System.Configuration.ConfigurationManager.ConnectionStrings["myconn"].ConnectionString;
+        // connction String
+        string cs = System.Configuration.ConfigurationManager.ConnectionStrings["myconn"].ConnectionString;
 
         try
         {

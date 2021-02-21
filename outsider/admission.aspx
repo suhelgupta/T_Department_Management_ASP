@@ -35,11 +35,11 @@
                 <div class="col-md-6">
                     <label for="inputname">First name</label>
                     <%--<input type="text" class="form-control" runat="server" id="fname" placeholder="First name" />--%>
-                    <asp:TextBox ID="TextBox1" CssClass="form-control" runat="server" placeholder="First name"></asp:TextBox>
+                    <asp:TextBox ID="TextBox1" CssClass="form-control" runat="server" placeholder="First name" ReadOnly="True"></asp:TextBox>
                 </div>
                 <div class="col-md-6">
                     <label for="inputname">Last name</label>
-                    <input type="text" class="form-control" runat="server" id="lname" placeholder="Last name" />
+                    <input type="text" class="form-control" runat="server" id="lname" placeholder="Last name" readonly="readonly" />
                     <%--<asp:TextBox ID="TextBox2" CssClass="form-control" runat="server" placeholder="Last name"></asp:TextBox>--%>
                 </div>
 
@@ -68,11 +68,11 @@
 
                 <div class="col-md-6">
                     <label for="email">Email ID</label>
-                    <input type="email" class="form-control" runat="server" placeholder="Email ID" id="emailid" />
+                    <input type="email" class="form-control" runat="server" placeholder="Email ID" id="emailid" readonly="readonly" />
                 </div>
                 <div class="col-md-6">
                     <label for="contactno">Contact No</label>
-                    <input type="text" class="form-control" runat="server" placeholder="Contact NO" id="stphone" />
+                    <input type="text" class="form-control" runat="server" placeholder="Contact NO" id="stphone" readonly="readonly" />
                 </div>
 
                 <div class="col-md-6">
