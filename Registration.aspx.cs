@@ -73,7 +73,6 @@ public partial class Registration : System.Web.UI.Page
 
             if (checkphone)
             {
-                
                 message.InnerText = "Phone Number Already Exist";
                 success = false;
             }

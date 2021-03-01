@@ -17,16 +17,12 @@ public partial class Login : System.Web.UI.Page
 
     protected void Button6_Click(object sender, EventArgs e)
     {
-        //bool outsider = false;
-        //bool inhouse = false;
-        //bool teacher = false;
-        //bool librarian = false;
-        //bool hod = false;
 
         string email = TextBox1.Text;
         string password = TextBox2.Text;
-        string uniqueID = TextBox3.Text;
-        string tablename = ""; string redrict = "";
+        //string uniqueID = TextBox3.Text;
+        string tablename = "";
+        string redrict = "";
         string posts = postss.Value;
         bool login = false;
         string post = "";
@@ -49,7 +45,6 @@ public partial class Login : System.Web.UI.Page
 
         try
         {
-
             SqlConnection con = new SqlConnection(cs);
             con.Open();
             SqlCommand myCommand = con.CreateCommand();
@@ -67,18 +62,7 @@ public partial class Login : System.Web.UI.Page
                 }
             }
             myReader.Close();
-            con.Close(); // Just close everything
-
-            //SqlConnection con1 = new SqlConnection(cs);
-            //con.Open();
-            //SqlCommand myCommand1 = con1.CreateCommand();
-            //myCommand1.CommandText = ("SELECT * from " + tablename +"where email = '"+email+"'"); // Where Login is your table . UserName and Password Columns
-            //SqlDataReader myReader1 = myCommand1.ExecuteReader();
-
-
-
-            //myReader1.Close();
-            //con1.Close(); // Just close everything
+            con.Close(); // Just close 
         }
         catch(Exception )
         {
@@ -87,157 +71,21 @@ public partial class Login : System.Web.UI.Page
 
         if (login)
         {
-            TextBox1.Text = "Login sucess" + fname;
-
-
+            //TextBox1.Text = "Login sucess" + fname;
             Session["login"] = "true";
             Session["cemail"] = email;
             Session["post"] = post;
             Session["fname"] = fname;
-            Session.Timeout = 1;
-
-
-
-            unique.Style.Add("display","block");
+            Session.Timeout = 10;
             Response.Redirect(""+redrict);
         }
-
         else
         {
             //MessageBox.Show("Invalid UserName or Password", "Access Denied"); // Error message
-            TextBox1.Text = "Login fail" + password;
-
+            //TextBox1.Text = "Login fail" + password;
         }
-
-        
-
-
-        //while (myReader.Read())
-        //{
-        //    if (userNameBox.Text.CompareTo(myReader["UserName"].ToString()) == 0 && passwordBox.Text.CompareTo(myReader["Password"].ToString()) == 0) // A little messy but does the job to compare your infos assuming your using a textbox for username and password
-        //    {
-        //        login = true;
-        //    }
-        //}
-
-        
-
-        //myReader.Close();
-        //myConnection.Close(); // Just close everything
     }
  }
 
 
-    //protected void Button1_Click(object sender, EventArgs e)
-    //{
-    //    inhouse = false;
-    //    outsider = true;
-    //    teacher = false;
-    //    librarian = false;
-    //    hod = false;
-    //    makeradio();
-
-    //}
-
-    //protected void Button2_Click(object sender, EventArgs e)
-    //{
-    //    inhouse = true;
-    //    outsider = false;
-    //    teacher = false;
-    //    librarian = false;
-    //    hod = false;
-    //    makeradio();
-    //}
-
-    //protected void Button3_Click(object sender, EventArgs e)
-    //{
-    //    inhouse = false;
-    //    outsider = false;
-    //    teacher = true;
-    //    librarian = false;
-    //    hod = false;
-    //    makeradio();
-    //}
-
-    //protected void Button4_Click(object sender, EventArgs e)
-    //{
-    //    inhouse = false;
-    //    outsider = false;
-    //    teacher = false;
-    //    librarian = true;
-    //    hod = false;
-    //    makeradio();
-    //}
-
-    //protected void Button5_Click(object sender, EventArgs e)
-    //{
-    //    inhouse = false;
-    //    outsider = false;
-    //    teacher = false;
-    //    librarian = false;
-    //    hod = true;
-    //    makeradio();
-    //}
-
-    //protected void makeradio()
-    //{
-    //    Button1.CssClass = String.Join(" ", Button1.CssClass.Split(' ').Except(new string[] { "btn-outline-success" }).ToArray());
-    //    Button2.CssClass = String.Join(" ", Button1.CssClass.Split(' ').Except(new string[] { "btn-outline-success" }).ToArray());
-    //    Button3.CssClass = String.Join(" ", Button1.CssClass.Split(' ').Except(new string[] { "btn-outline-success" }).ToArray());
-    //    Button4.CssClass = String.Join(" ", Button1.CssClass.Split(' ').Except(new string[] { "btn-outline-success" }).ToArray());
-    //    Button5.CssClass = String.Join(" ", Button1.CssClass.Split(' ').Except(new string[] { "btn-outline-success" }).ToArray());
-
-    //    Button1.CssClass = String.Join(" ", Button1.CssClass.Split(' ').Except(new string[] { "btn-success" }).ToArray());
-    //    Button2.CssClass = String.Join(" ", Button1.CssClass.Split(' ').Except(new string[] { "btn-success" }).ToArray());
-    //    Button3.CssClass = String.Join(" ", Button1.CssClass.Split(' ').Except(new string[] { "btn-success" }).ToArray());
-    //    Button4.CssClass = String.Join(" ", Button1.CssClass.Split(' ').Except(new string[] { "btn-success" }).ToArray());
-    //    Button5.CssClass = String.Join(" ", Button1.CssClass.Split(' ').Except(new string[] { "btn-success" }).ToArray());
-
-    //    if (outsider == true)
-    //    {
-    //        Button1.CssClass = String.Join(" ", Button1.CssClass.Split(' ').Except(new string[] { "btn-success" }).Concat(new string[] { "btn-success" }).ToArray());
-    //        Button2.CssClass = String.Join(" ", Button2.CssClass.Split(' ').Except(new string[] { "btn-outline-success" }).Concat(new string[] { "btn-outline-success" }).ToArray());
-    //        Button3.CssClass = String.Join(" ", Button3.CssClass.Split(' ').Except(new string[] { "btn-outline-success" }).Concat(new string[] { "btn-outline-success" }).ToArray());
-    //        Button4.CssClass = String.Join(" ", Button4.CssClass.Split(' ').Except(new string[] { "btn-outline-success" }).Concat(new string[] { "btn-outline-success" }).ToArray());
-    //        Button5.CssClass = String.Join(" ", Button5.CssClass.Split(' ').Except(new string[] { "btn-outline-success" }).Concat(new string[] { "btn-outline-success" }).ToArray());
-
-            
-    //    }
-    //    else if (inhouse == true)
-    //    {
-    //        Button1.CssClass = String.Join(" ", Button1.CssClass.Split(' ').Except(new string[] { "btn-outline-success" }).Concat(new string[] { "btn-outline-success" }).ToArray());
-    //        Button2.CssClass = String.Join(" ", Button2.CssClass.Split(' ').Except(new string[] { "btn-success" }).Concat(new string[] { "btn-success" }).ToArray());
-    //        Button3.CssClass = String.Join(" ", Button3.CssClass.Split(' ').Except(new string[] { "btn-outline-success" }).Concat(new string[] { "btn-outline-success" }).ToArray());
-    //        Button4.CssClass = String.Join(" ", Button4.CssClass.Split(' ').Except(new string[] { "btn-outline-success" }).Concat(new string[] { "btn-outline-success" }).ToArray());
-    //        Button5.CssClass = String.Join(" ", Button5.CssClass.Split(' ').Except(new string[] { "btn-outline-success" }).Concat(new string[] { "btn-outline-success" }).ToArray());
-            
-
-    //    }
-    //    else if (teacher == true)
-    //    {
-    //        Button1.CssClass = String.Join(" ", Button1.CssClass.Split(' ').Except(new string[] { "btn-outline-success" }).Concat(new string[] { "btn-outline-success" }).ToArray());
-    //        Button2.CssClass = String.Join(" ", Button2.CssClass.Split(' ').Except(new string[] { "btn-outline-success" }).Concat(new string[] { "btn-outline-success" }).ToArray());
-    //        Button3.CssClass = String.Join(" ", Button3.CssClass.Split(' ').Except(new string[] { "btn-success" }).Concat(new string[] { "btn-success" }).ToArray());
-    //        Button4.CssClass = String.Join(" ", Button4.CssClass.Split(' ').Except(new string[] { "btn-outline-success" }).Concat(new string[] { "btn-outline-success" }).ToArray());
-    //        Button5.CssClass = String.Join(" ", Button5.CssClass.Split(' ').Except(new string[] { "btn-outline-success" }).Concat(new string[] { "btn-outline-success" }).ToArray());
-    //    }
-    //    else if (librarian == true)
-    //    {
-    //        Button1.CssClass = String.Join(" ", Button1.CssClass.Split(' ').Except(new string[] { "btn-outline-success" }).Concat(new string[] { "btn-outline-success" }).ToArray());
-    //        Button2.CssClass = String.Join(" ", Button2.CssClass.Split(' ').Except(new string[] { "btn-outline-success" }).Concat(new string[] { "btn-outline-success" }).ToArray());
-    //        Button3.CssClass = String.Join(" ", Button3.CssClass.Split(' ').Except(new string[] { "btn-outline-success" }).Concat(new string[] { "btn-outline-success" }).ToArray());
-    //        Button4.CssClass = String.Join(" ", Button4.CssClass.Split(' ').Except(new string[] { "btn-success" }).Concat(new string[] { "btn-success" }).ToArray());
-    //        Button5.CssClass = String.Join(" ", Button5.CssClass.Split(' ').Except(new string[] { "btn-outline-success" }).Concat(new string[] { "btn-outline-success" }).ToArray());
-    //    }
-    //    else if (hod == true)
-    //    {
-    //        Button1.CssClass = String.Join(" ", Button1.CssClass.Split(' ').Except(new string[] { "btn-outline-success" }).Concat(new string[] { "btn-outline-success" }).ToArray());
-    //        Button2.CssClass = String.Join(" ", Button2.CssClass.Split(' ').Except(new string[] { "btn-outline-success" }).Concat(new string[] { "btn-outline-success" }).ToArray());
-    //        Button3.CssClass = String.Join(" ", Button3.CssClass.Split(' ').Except(new string[] { "btn-outline-success" }).Concat(new string[] { "btn-outline-success" }).ToArray());
-    //        Button4.CssClass = String.Join(" ", Button4.CssClass.Split(' ').Except(new string[] { "btn-outline-success" }).Concat(new string[] { "btn-outline-success" }).ToArray());
-    //        Button5.CssClass = String.Join(" ", Button5.CssClass.Split(' ').Except(new string[] { "btn-success" }).Concat(new string[] { "btn-success" }).ToArray());
-    //    }
-
-
-
-
+   

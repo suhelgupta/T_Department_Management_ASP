@@ -57,7 +57,7 @@
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Admissions
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown"> 
-                                <li><a class="dropdown-item" href="admission.aspx">Admission Form</a></li>
+                                <li><a class="dropdown-item" href="/outsider/admission.aspx">Admission Form</a></li>
                                 <li><a class="dropdown-item" href="#">Fees Structure</a></li>
                                 <li><a class="dropdown-item" href="#">Reservation of Seats</a></li>
                                 <li><a class="dropdown-item" href="#">Rules</a></li>

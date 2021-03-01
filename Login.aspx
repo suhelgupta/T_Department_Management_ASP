@@ -108,28 +108,21 @@
                 <label for="fname"><b>Email</b></label>
                 <asp:TextBox ID="TextBox1" CssClass="inputtpes" runat="server"></asp:TextBox>
 
-                <label for="lname"><b>Passwprd</b></label>
+                <label for="lname"><b>Password</b></label>
                 <asp:TextBox ID="TextBox2" CssClass="inputtpes" runat="server" TextMode="Password"></asp:TextBox> 
 
                 <label for="postss" class="form-label fw-bold">Select post</label>
                 <select id="postss" runat="server" class="form-select" placeholder="Choose">
-                <option selected="selected" value="1">Outsider</option>
-                <option value="2">Insider</option>
-                <option value="3">librearian</option>
-                <option value="4">hod</option>
-                <option value="5">teachers</option>
-
+                    <option selected="selected" value="1">Outsider</option>
+                    <option value="2">Insider</option>
+                    <option value="3">Librarian</option>
+                    <option value="4">hod</option>
+                    <option value="5">teachers</option>
                 </select>
                 <br /><br />
-                    <div style="display:none;" id="unique" runat="server">
-                        <label for="fname"><b>First Name</b></label>
-                        <asp:TextBox ID="TextBox3" CssClass="inputtpes" runat="server"></asp:TextBox>
-                        <br /><br />
-                    </div>
 
                 <asp:Button ID="Button6" CssClass="button12" runat="server" Text="Button" OnClick="Button6_Click" />
                 <br />
-                <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
 
             </div>
         </form>

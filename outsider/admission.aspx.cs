@@ -9,12 +9,14 @@ using System.Data.SqlClient;
 
 public partial class outsider_admission : System.Web.UI.Page
 {
+    // connction String
+    string cs = System.Configuration.ConfigurationManager.ConnectionStrings["myconn"].ConnectionString;
     protected void Page_Load(object sender, EventArgs e)
     {
         
         if (!IsPostBack)
         {
-            if(Session["login"] != null && Session["post"] != null)
+            if(Session["login"] != null && Session["post"] != null && Session["cemail"] != null)
             {
                 if (Session["login"].ToString() == "true" && Session["post"].ToString() == "out")
                 {
@@ -27,12 +29,17 @@ public partial class outsider_admission : System.Web.UI.Page
                         SqlConnection con = new SqlConnection(cs);
                         con.Open();
                         SqlCommand myCommand = con.CreateCommand();
-                        myCommand.CommandText = ("SELECT  fname, lname,email, phone from Register WHERE email='" + Session["email"].ToString() + "'"); // Where Login is your table . UserName and Password Columns
+                        myCommand.CommandText = ("SELECT  * from Register WHERE email='" + Session["cemail"].ToString() + "'"); // Where Login is your table . UserName and Password Columns
                         SqlDataReader myReader = myCommand.ExecuteReader();
-                        TextBox1.Text = myReader["fname"].ToString();
-                        lname.Value = myReader["lanme"].ToString();
-                        emailid.Value = myReader["email"].ToString();
-                        stphone.Value = myReader["phone"].ToString();
+                        while(myReader.Read())
+                        {
+                                TextBox1.Text = myReader["fname"].ToString();
+                                //TextBox1.Attributes.Add("placeholder", myReader["fname"].ToString());
+                                lname.Value = myReader["lname"].ToString();
+                                //lname.Attributes["placeholder"] = myReader["lanme"].ToString();
+                                emailid.Value = myReader["email"].ToString();
+                                stphone.Value = myReader["phone"].ToString();
+                        }
 
                     }
                     catch
@@ -49,8 +56,20 @@ public partial class outsider_admission : System.Web.UI.Page
             {
                 Response.Redirect("../Login.aspx");
             }
-            
+
+            bool checkusers = Checkuser();
+            if (checkusers)
+            {
+                Response.Write("<script>alert(\"Success\")</script>");
+                mainform.Style.Add("display", "none");
+            }
+            else
+            {
+                Response.Write("<script>alert(\"fail\")</script>");
+
+            }
         }
+            
     }
 
     protected void Button1_Click(object sender, EventArgs e)
@@ -94,7 +113,7 @@ public partial class outsider_admission : System.Web.UI.Page
         {
             string fileExt = System.IO.Path.GetExtension(FileUpload1.FileName);
             FileUpload1.PostedFile.SaveAs(Server.MapPath("~/Images/data/") + stphones + "_10th" + fileExt);
-            filename10 = stphones + "_10th" + fileExt;
+            filename10 = "../Images/data/" + stphones + "_10th" + fileExt;
         }
 
         string clgnames = clgname.Value;
@@ -104,13 +123,12 @@ public partial class outsider_admission : System.Web.UI.Page
         {
             string fileExt = System.IO.Path.GetExtension(FileUpload2.FileName);
             FileUpload2.PostedFile.SaveAs(Server.MapPath("~/Images/data/") + stphones + "_12th" + fileExt);
-            filename12 = stphones + "_12th" + fileExt;
+            filename12 = "../Images/data/" + stphones + "_12th" + fileExt;
         }
 
         //Label1.Text = "" + fname + lnames + yoa + gender + state;
 
-        // connction String
-        string cs = System.Configuration.ConfigurationManager.ConnectionStrings["myconn"].ConnectionString;
+       
         try
         {
             // connection 1
@@ -161,4 +179,31 @@ public partial class outsider_admission : System.Web.UI.Page
             strong1.InnerText = "Error!";
         }
     }
+
+    public bool Checkuser()
+    {
+        try
+        {
+
+            SqlConnection con = new SqlConnection(cs);
+            con.Open();
+            SqlCommand myCommand = con.CreateCommand();
+            myCommand.CommandText = ("SELECT  email from addmision "); // Where Login is your table . UserName and Password Columns
+            SqlDataReader myReader = myCommand.ExecuteReader();
+            while (myReader.Read())
+            {
+                if(Session["cemail"].ToString().CompareTo(myReader["email"].ToString()) == 0)
+                {
+                    return true;
+                }
+            }
+
+        }
+        catch
+        {
+
+        }
+        return false;
+    }
+
 }

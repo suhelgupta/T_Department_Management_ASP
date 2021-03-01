@@ -6,16 +6,23 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Text;
+using System.Data;
 
 public partial class Library_AddBooks : System.Web.UI.Page
 {
+    // connction String
+    string cs = System.Configuration.ConfigurationManager.ConnectionStrings["myconn"].ConnectionString;
+    
     protected void Page_Load(object sender, EventArgs e)
     {
+       
+        string Searchby = DropDownList1.SelectedValue;
+        string search = TextBox7.Text;
+        string sqlcmd = "SELECT * FROM [libaddbook] WHERE (" + Searchby + " like '%" + search + "%') ";
+        SqlDataSource1.SelectCommand = sqlcmd;
 
     }
 
-    // connction String
-    string cs = System.Configuration.ConfigurationManager.ConnectionStrings["myconn"].ConnectionString;
 
     protected void Button1_Click(object sender, EventArgs e)
     {
@@ -109,29 +116,6 @@ public partial class Library_AddBooks : System.Web.UI.Page
         
     }
 
-    //bool checkbook(string bookid)
-    //{
-    //    // connection 1
-    //    SqlConnection con = new SqlConnection(cs);
-    //    con.Open();
-    //    SqlCommand myCommand = con.CreateCommand();
-    //    myCommand.CommandText = ("SELECT bookcode from libaddbook"); // Where Login is your table . UserName and Password Columns
-    //    SqlDataReader myReader = myCommand.ExecuteReader();
-
-    //    // Check Email and phone no.
-    //    while (myReader.Read())
-    //    {
-    //        if (bookid.CompareTo(myReader["bookcode"].ToString()) == 0) // passwordBox.Text.CompareTo(myReader["Password"].ToString()) == 0) // A little messy but does the job to compare your infos assuming your using a textbox for username and password
-    //        {
-    //            return true;
-    //        }
-            
-    //    }
-    //    myReader.Close();
-    //    con.Close(); // Just close everything
-    //    return false;
-    //}
-
     int checktotalbook(string bookid)
     {
         // connection 1
@@ -155,4 +139,65 @@ public partial class Library_AddBooks : System.Web.UI.Page
         con.Close(); // Just close everything
         return 0;
     }
+
+    protected void Button2_Click(object sender, EventArgs e)
+    {
+
+        // removing a class
+        successAlert.Attributes.Add("class", String.Join(" ", successAlert.Attributes["class"].Split(' ').Except(new string[] { "alert-danger" }).ToArray()));
+        successAlert.Attributes.Add("class", String.Join(" ", successAlert.Attributes["class"].Split(' ').Except(new string[] { "alert-success" }).ToArray()));
+
+        string Searchby = DropDownList1.SelectedValue;
+        string search = TextBox7.Text;
+        //TextBox1.Text = Searchby;
+        //TextBox2.Text = search;
+        SqlDataSource1.SelectCommand = "SELECT * FROM [libaddbook] WHERE (" + Searchby + " like '%" + search + "%') ORDER BY [avquantity] DESC";
+
+
+        TextBox7.Text = search;
+        DropDownList1.SelectedValue = Searchby;
+        //string sqlcmd = "SELECT * FROM [libaddbook] WHERE (" + Searchby + " like '%" + search + "%') ";
+
+
+
+    }
+
+
+    //protected void GridView1_RowUpdating1(object sender, GridViewUpdateEventArgs e)
+    //{
+
+    //}
+
+    //protected void GridView1_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+    //{
+
+    //}
+
+    //protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
+    //{
+    //    dt.Rows.RemoveAt(e.RowIndex);
+    //    GridView1.DataSource = dt;
+    //    GridView1.DataBind();
+    //}
+
+    //protected void GridView1_RowEditing(object sender, GridViewEditEventArgs e)
+    //{
+    //    GridView1.EditIndex = e.NewEditIndex;
+
+    //}
+
+    //protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+    //{
+    //    string Searchby = DropDownList1.SelectedValue;
+    //    string search = TextBox7.Text;
+    //    SqlDataSource1.SelectCommand = "SELECT * FROM [libaddbook] WHERE (" + Searchby + " like '%" + search + "%') ORDER BY [avquantity] DESC";
+    //}
+
+    //protected void TextBox7_TextChanged(object sender, EventArgs e)
+    //{
+    //    string Searchby = DropDownList1.SelectedValue;
+    //    string search = TextBox7.Text;
+    //    SqlDataSource1.SelectCommand = "SELECT * FROM [libaddbook] WHERE (" + Searchby + " like '%" + search + "%') ORDER BY [avquantity] DESC";
+
+    //}
 }

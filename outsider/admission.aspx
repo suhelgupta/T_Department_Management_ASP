@@ -29,17 +29,17 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
 
-        <div class="container background p-5">
+        <div class="container background p-5" id="mainform" runat="server">
             <div class="row">
                 <h3>INFORMATION TECHNOLOGY ADMISSION FORM</h3>
                 <div class="col-md-6">
                     <label for="inputname">First name</label>
                     <%--<input type="text" class="form-control" runat="server" id="fname" placeholder="First name" />--%>
-                    <asp:TextBox ID="TextBox1" CssClass="form-control" runat="server" placeholder="First name" ReadOnly="True"></asp:TextBox>
+                    <asp:TextBox ID="TextBox1" CssClass="form-control" runat="server" ReadOnly="True"></asp:TextBox>
                 </div>
                 <div class="col-md-6">
                     <label for="inputname">Last name</label>
-                    <input type="text" class="form-control" runat="server" id="lname" placeholder="Last name" readonly="readonly" />
+                    <input type="text" class="form-control" runat="server" id="lname" placeholder="" readonly="readonly" />
                     <%--<asp:TextBox ID="TextBox2" CssClass="form-control" runat="server" placeholder="Last name"></asp:TextBox>--%>
                 </div>
 
@@ -195,6 +195,9 @@
                 </div>
                     <asp:TextBox ID="TextBox2" TextMode="MultiLine" runat="server"></asp:TextBox>
             </div>
+        </div>
+        <div>
+
         </div>
     </form>
     <br />

@@ -12,6 +12,8 @@ public partial class logout : System.Web.UI.Page
         Session.Remove("login");
         Session.Remove("cemail");
         Session.Remove("post");
+        Session.Remove("fname");
+
 
         //Session["login"] = null;
         //Session["cemail"] = null;
