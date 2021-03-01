@@ -80,3 +80,79 @@ CREATE TABLE [dbo].[libaddbook] (
 
 
 
+
+
+
+
+
+
+
+CREATE TABLE [dbo].[libaddbook](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[bookname] [varchar](50) NULL,
+	[Authorname] [varchar](50) NULL,
+	[publicationname] [varchar](max) NULL,
+	[bookcode] [varchar](50) NULL,
+	[totalquantity] [int] NULL,
+	[avquantity] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[libissubook]    Script Date: 01-03-2021 23:19:12 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[libissubook](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[rollno] [varchar](50) NULL,
+	[bookcode] [varchar](50) NULL,
+	[uniquecode] [varchar](50) NULL,
+	[dateofissue] [varchar](50) NULL,
+	[dateofreturn] [varchar](50) NULL,
+	[Retundate] [varchar](50) NULL,
+	[fine] [int] NULL,
+	[status] [varchar](20) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[Students]    Script Date: 01-03-2021 23:19:12 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[Students](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[year] [varchar](10) NULL,
+	[Rollno] [varchar](20) NULL,
+	[class] [varchar](10) NULL,
+	[fname] [varchar](50) NULL,
+	[lname] [varchar](50) NULL,
+	[email] [varchar](50) NULL,
+	[phone] [varchar](15) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+
