@@ -5,16 +5,15 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Library_Library : System.Web.UI.MasterPage
+public partial class hod_MasterPage : System.Web.UI.MasterPage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
         if (!IsPostBack)
         {
             if (Session["login"] != null && Session["post"] != null && Session["cemail"] != null)
             {
-                if (Session["login"].ToString() == "true" && Session["post"].ToString() == "lib")
+                if (Session["login"].ToString() == "true" && Session["post"].ToString() == "hod")
                 {
                 }
                 else
