@@ -27,17 +27,21 @@ public partial class Login : System.Web.UI.Page
         bool login = false;
         string post = "";
         string fname = "";
+        string roll = "";
+        string query = "";
+        bool success = true;
+
 
         //encording the password
         byte[] EncodePass = Encoding.UTF8.GetBytes(TextBox1.Text);
         string Epassword = Convert.ToBase64String(EncodePass);
 
         // select the table name
-        if(posts == "1") { tablename = "Register"; redrict = "Home.aspx"; post = "out";  }
-        else if(posts == "2") { tablename = "Register"; redrict = "http://www.youtube.com"; post = "in"; }
-        else if (posts == "3") { tablename = "Register"; redrict = "http://www.flipkart.com"; post = "lib"; }
-        else if (posts == "4") { tablename = "Register"; redrict = "http://www.facebook.com"; post = "hod"; }
-        else if (posts == "5") { tablename = "Register"; redrict = "Home.aspx"; post = "tec"; }
+        if(posts == "1") { tablename = "Register"; redrict = "/outsider/Home.aspx"; post = "out"; query = "SELECT email, Password, fname from Register where post = '" + post + "'"; }
+        else if(posts == "2") { tablename = "Register"; redrict = "/Insider/Home.aspx"; post = "in"; query = "SELECT email, Password, fname from Register where post = '" + post + "'"; }
+        else if (posts == "3") { tablename = "staf"; redrict = "/Library/Home.aspx"; post = "lib"; query = "SELECT email, Password, fname from staf where role = '"+ post +"'"; }
+        else if (posts == "4") { tablename = "staf"; redrict = "/hod/Home.aspx"; post = "hod"; query = "SELECT email, Password, fname from staf where role = '" + post + "'"; }
+        else if (posts == "5") { tablename = "staf"; redrict = "/teachers/Home.aspx"; post = "tec"; query = "SELECT email, Password, fname from staf where role = '" + post + "'";  }
         else { ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('please select the post')", true); }
 
         // connction String
@@ -48,7 +52,7 @@ public partial class Login : System.Web.UI.Page
             SqlConnection con = new SqlConnection(cs);
             con.Open();
             SqlCommand myCommand = con.CreateCommand();
-            myCommand.CommandText = ("SELECT email, Password, fname from "+ tablename); // Where Login is your table . UserName and Password Columns
+            myCommand.CommandText = (query); // Where Login is your table . UserName and Password Columns
             SqlDataReader myReader = myCommand.ExecuteReader();
 
             // Check Email and phone no.
@@ -56,6 +60,7 @@ public partial class Login : System.Web.UI.Page
             {
                 if (email.CompareTo(myReader["email"].ToString()) == 0 && password.CompareTo(myReader["Password"].ToString()) == 0) // A little messy but does the job to compare your infos assuming your using a textbox for username and password
                 {
+
                     login = true;
                     fname = myReader["fname"].ToString();
 
@@ -66,7 +71,10 @@ public partial class Login : System.Web.UI.Page
         }
         catch(Exception )
         {
-            
+            //Response.Write("<script>alert(\"It seems you are not the insider member\")</script>");
+            message.InnerText = "Unable to login please check email,password and Post";
+            success = false;
+
         }
 
         if (login)
@@ -76,14 +84,59 @@ public partial class Login : System.Web.UI.Page
             Session["cemail"] = email;
             Session["post"] = post;
             Session["fname"] = fname;
+            Session["roll"] = roll;
+
             Session.Timeout = 10;
             Response.Redirect(""+redrict);
         }
         else
         {
-            //MessageBox.Show("Invalid UserName or Password", "Access Denied"); // Error message
-            //TextBox1.Text = "Login fail" + password;
+            //    MessageBox.Show("Invalid UserName or Password", "Access Denied"); // Error message
+            //    TextBox1.Text = "Login fail" + password;
+
+            message.InnerText = "Unable to login please check email,password and Post";
+            success = false;
         }
+
+        // removing a class
+        successAlert.Attributes.Add("class", String.Join(" ", successAlert.Attributes["class"].Split(' ').Except(new string[] { "alert-danger" }).ToArray()));
+        successAlert.Attributes.Add("class", String.Join(" ", successAlert.Attributes["class"].Split(' ').Except(new string[] { "alert-success" }).ToArray()));
+
+
+        if (success)
+        {
+
+            successAlert.Attributes.Add("class", String.Join(" ", successAlert.Attributes["class"].Split(' ').Except(new string[] { "alert-success", }).Concat(new string[] { "alert-success" }).ToArray()));
+            successAlert.Attributes.Add("class", String.Join(" ", successAlert.Attributes["class"].Split(' ').Except(new string[] { "show", }).Concat(new string[] { "show" }).ToArray()));
+            strong1.InnerText = "Success!";
+        }
+        else
+        {
+            successAlert.Attributes.Add("class", String.Join(" ", successAlert.Attributes["class"].Split(' ').Except(new string[] { "alert-danger", }).Concat(new string[] { "alert-danger" }).ToArray()));
+            successAlert.Attributes.Add("class", String.Join(" ", successAlert.Attributes["class"].Split(' ').Except(new string[] { "show" }).Concat(new string[] { "show" }).ToArray()));
+            strong1.InnerText = "Error!";
+        }
+    }
+
+    string checkeroll(string email)
+    {
+        // connction String
+        string cs = System.Configuration.ConfigurationManager.ConnectionStrings["myconn"].ConnectionString;
+        SqlConnection con = new SqlConnection(cs);
+        con.Open();
+        SqlCommand myCommand = con.CreateCommand();
+        myCommand.CommandText = ("SELECT Rollno fname from Students where email = '" + email + "'"); // Where Login is your table . UserName and Password Columns
+        SqlDataReader myReader = myCommand.ExecuteReader();
+        // Check Email and phone no.
+        while (myReader.Read())
+        {
+            if (email.CompareTo(myReader["email"].ToString()) == 0)
+            {
+                return myReader["Rollno"].ToString();
+            }
+        }
+
+        return "not found";
     }
  }
 

@@ -98,6 +98,12 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+
+    <div class="alert alert-dismissible fade " id="successAlert" runat="server" role="alert">
+        <strong id="strong1" runat="server">Success!</strong> <span id="message" runat="server"> </span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
     <div class="loginimage">
         <form id="form1" runat="server">
             <div class="imgcontainer">

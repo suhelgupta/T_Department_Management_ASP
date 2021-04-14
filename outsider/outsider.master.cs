@@ -11,13 +11,33 @@ public partial class outsider_outsider : System.Web.UI.MasterPage
     {
         if (!IsPostBack)
         {
+            if (Session["login"] != null && Session["post"] != null && Session["cemail"] != null)
+            {
+                if (Session["login"].ToString() == "true" && Session["post"].ToString() == "out")
+                {
+                }
+                else
+                {
+                    Response.Redirect("../Login.aspx");
+                }
+            }
+            else
+            {
+                Response.Redirect("../Login.aspx");
+            }
+        }
+
+        if (!IsPostBack)
+        {
             if (Session["login"] != null)
             {
+                withoutlogin.Style.Add(HtmlTextWriterStyle.Display, "none");
                 withlogin.Style.Add(HtmlTextWriterStyle.Display, "inline-block");
                 usename.InnerText += Session["fname"].ToString();
             }
             else
             {
+                withoutlogin.Style.Add(HtmlTextWriterStyle.Display, "inline-block");
                 withlogin.Style.Add(HtmlTextWriterStyle.Display, "none");
             }
         }
@@ -25,10 +45,12 @@ public partial class outsider_outsider : System.Web.UI.MasterPage
         {
             if (Session["login"] != null)
             {
+                withoutlogin.Style.Add(HtmlTextWriterStyle.Display, "none");
                 withlogin.Style.Add(HtmlTextWriterStyle.Display, "inline-block");
             }
             else
             {
+                withoutlogin.Style.Add(HtmlTextWriterStyle.Display, "inline-block");
                 withlogin.Style.Add(HtmlTextWriterStyle.Display, "none");
             }
         }
