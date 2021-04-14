@@ -1,0 +1,151 @@
+CREATE TABLE [dbo].[Timetable] (
+    [Id]   INT          IDENTITY (1, 1) NOT NULL,
+    [Slot] VARCHAR (50) NULL,
+    [Mon]  VARCHAR (50) NULL,
+    [Tue]  VARCHAR (50) NULL,
+    [Wed]  VARCHAR (50) NULL,
+    [thur] VARCHAR (50) NULL,
+    [fri]  VARCHAR (50) NULL,
+    [sat]  VARCHAR (50) NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
+
+
+
+
+CREATE TABLE [dbo].[Students] (
+    [Id]     INT          IDENTITY (1, 1) NOT NULL,
+    [year]   VARCHAR (10) NULL,
+    [Rollno] VARCHAR (20) NULL,
+    [class]  VARCHAR (10) NULL,
+    [fname]  VARCHAR (50) NULL,
+    [lname]  VARCHAR (50) NULL,
+    [email]  VARCHAR (50) NULL,
+    [phone]  VARCHAR (15) NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
+
+
+
+
+
+CREATE TABLE [dbo].[staf] (
+    [Id]       INT          IDENTITY (1, 1) NOT NULL,
+    [fname]    VARCHAR (20) NULL,
+    [lname]    VARCHAR (20) NULL,
+    [email]    VARCHAR (50) NULL,
+    [phone]    VARCHAR (15) NULL,
+    [role]     VARCHAR (40) NULL,
+    [password] VARCHAR (50) NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
+
+
+
+
+
+CREATE TABLE [dbo].[Register] (
+    [sno]      INT          IDENTITY (1, 1) NOT NULL,
+    [fname]    VARCHAR (20) NOT NULL,
+    [lname]    VARCHAR (20) NOT NULL,
+    [email]    VARCHAR (30) NOT NULL,
+    [phone]    VARCHAR (15) NOT NULL,
+    [Password] VARCHAR (60) NOT NULL,
+    CONSTRAINT [PK_Register] PRIMARY KEY CLUSTERED ([sno] ASC)
+);
+
+
+
+
+
+
+CREATE TABLE [dbo].[libissubook] (
+    [Id]           INT          IDENTITY (1, 1) NOT NULL,
+    [rollno]       VARCHAR (50) NULL,
+    [bookcode]     VARCHAR (50) NULL,
+    [uniquecode]   VARCHAR (50) NULL,
+    [dateofissue]  VARCHAR (50) NULL,
+    [dateofreturn] VARCHAR (50) NULL,
+    [Retundate]    VARCHAR (50) NULL,
+    [fine]         INT          NULL,
+    [status]       VARCHAR (20) NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
+
+
+
+
+CREATE TABLE [dbo].[libaddbook] (
+    [Id]              INT           IDENTITY (1, 1) NOT NULL,
+    [bookname]        VARCHAR (50)  NULL,
+    [Authorname]      VARCHAR (50)  NULL,
+    [publicationname] VARCHAR (MAX) NULL,
+    [bookcode]        VARCHAR (50)  NULL,
+    [totalquantity]   INT           NULL,
+    [avquantity]      INT           NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
+
+
+
+
+
+CREATE TABLE [dbo].[addmision] (
+    [Id]              INT           IDENTITY (1, 1) NOT NULL,
+    [dateofaddmision] DATETIME      DEFAULT (getdate()) NOT NULL,
+    [fname]           VARCHAR (50)  NULL,
+    [lname]           VARCHAR (50)  NULL,
+    [yoa]             VARCHAR (5)   NULL,
+    [gender]          VARCHAR (10)  NULL,
+    [email]           VARCHAR (50)  NOT NULL,
+    [phone]           VARCHAR (15)  NULL,
+    [address]         VARCHAR (MAX) NULL,
+    [city]            VARCHAR (40)  NULL,
+    [state]           VARCHAR (20)  NULL,
+    [zipcode]         VARCHAR (10)  NULL,
+    [fathername]      VARCHAR (50)  NULL,
+    [fatherocp]       VARCHAR (50)  NULL,
+    [mothername]      VARCHAR (50)  NULL,
+    [motherocp]       VARCHAR (50)  NULL,
+    [gaurdianname]    VARCHAR (50)  NULL,
+    [gaurdianocp]     VARCHAR (50)  NULL,
+    [anualincome]     VARCHAR (50)  NULL,
+    [dob]             VARCHAR (50)  NULL,
+    [parntcontact]    VARCHAR (15)  NULL,
+    [gaurdiancontact] VARCHAR (50)  NULL,
+    [school10th]      VARCHAR (MAX) NULL,
+    [mark10th]        VARCHAR (10)  NULL,
+    [uploadname10]    VARCHAR (50)  NULL,
+    [college12th]     VARCHAR (MAX) NULL,
+    [mark12th]        VARCHAR (10)  NULL,
+    [uploadname12]    VARCHAR (50)  NULL,
+    [Status]          VARCHAR (20)  DEFAULT ('Pending') NULL,
+    CONSTRAINT [PK_addmision] PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
+
+
+
+
+
+
+
+CREATE TABLE [dbo].[examination] (
+    [Id]        INT           IDENTITY (1, 1) NOT NULL,
+    [type]      VARCHAR (10)  NULL,
+    [class]     VARCHAR (5)   NULL,
+    [sem]       VARCHAR (10)  NULL,
+    [subject]   VARCHAR (50)  NULL,
+    [date]      VARCHAR (50)  NULL,
+    [starttime] VARCHAR (50)  NULL,
+    [endtime]   VARCHAR (50)  NULL,
+    [glink]     VARCHAR (250) NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
+
